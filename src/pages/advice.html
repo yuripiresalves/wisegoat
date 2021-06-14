@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/global.css" />
+    <link rel="stylesheet" href="../styles/advice.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>WiseGoat</title>
+  </head>
+  <body>
+    <header>
+      <a class="logo" href="/src/pages">
+        <h2>Wise</h2>
+        <h1>Goat</h1>
+      </a>
+    </header>
+    <div class="container">
+      <div class="card">
+        <div class="sentence">
+          <h1></h1>
+          <p>- Cat</p>
+        </div>
+        <div class="image">
+          <img src="https://loremflickr.com/640/360" alt="Cat" />
+        </div>
+      </div>
+    </div>
+    <script>
+      async function getAdvice() {
+        const response = await fetch('https://api.adviceslip.com/advice');
+        const json = await response.json();
+        const { advice } = json.slip;
+
+        const sentence = document.querySelector('.sentence h1');
+        sentence.innerHTML = `"${advice}"`;
+      }
+      getAdvice();
+    </script>
+  </body>
+</html>
